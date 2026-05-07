@@ -19,249 +19,417 @@
 
   <style>
     :root {
-      --page-width: 800px;
+      --page-width: 820px;
       --bg: #fffff8;
+      --text: #1a1a1a;
+      --muted: #777;
+      --accent: #8b3a2f;        /* deep terracotta — warm, scholarly, not flashy */
+      --accent-light: #c9a89d;
+      --rule: #e2ddd0;
+      --heading: #1a3a5f;   /* deep navy blue */
     }
     html, body {
       margin: 0;
       padding: 0;
       background: var(--bg);
+      color: var(--text);
     }
     body {
-      /* keep your original left/right offsets feel */
-      margin-left: 0.5cm;
-      margin-right: 0.5px;
-      margin-top: 0;
-      font-family: serif;
-      line-height: 1.4;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, "Georgia", serif;
+      line-height: 1.55;
+      font-size: 16.5px;
     }
     .container {
-      width: var(--page-width);
+      max-width: var(--page-width);
       margin: 0 auto;
+      padding: 0 1.5rem;
     }
+
+    /* Navigation bar */
+    nav.top-nav {
+      padding: 1.2rem 0 0.4rem 0;
+      text-align: center;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 2rem;
+    }
+    nav.top-nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin: 0 0.6rem;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    nav.top-nav a:hover {
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+    }
+    nav.top-nav .sep {
+      color: var(--muted);
+      margin: 0 0.1rem;
+    }
+
+    /* Header */
     .top-row {
       display: table;
       width: 100%;
+      margin-bottom: 1rem;
     }
     .top-row > div {
       display: table-cell;
       vertical-align: top;
     }
     h1 {
-      margin: 0 0 0.6rem 0;
-      font-size: 2rem;   /* roughly <font size="+3"> */
-      font-weight: 700;
+      margin: 0 0 0.4rem 0;
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
     }
+    .header-info {
+      color: var(--text);
+      font-size: 1rem;
+    }
+    .contact {
+      margin: 0.8rem 0 0 0;
+      font-size: 0.95rem;
+    }
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .contact a:hover { text-decoration: underline; }
+    img.portrait {
+      height: 180px;
+      float: right;
+      border-radius: 3px;
+    }
+
+    /* Section headings */
     h2 {
-      margin: 1.6rem 0 0.6rem 0;
-      font-size: 1.5rem; /* roughly <font size="+2"> */
-      font-weight: 700;
+      margin: 2.2rem 0 0.8rem 0;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--heading);
+      letter-spacing: 0.3px;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--rule);
     }
-    .spacer { height: 1.5rem; }
-    .contact a { text-decoration: none; }
-    .contact { text-align: left; margin: 0.6rem 0 0 0; }
-    img.portrait { height: 180px; float: right; }
-    hr { margin: 1.8rem 0; border: none; border-top: 1px solid #ccc; }
-    ul { margin-top: 0.2rem; }
-    /* keep table sections aligned like your original */
-    .section-table { width: 100%; }
+
+    /* Body links */
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* News list */
+    .news-list {
+      margin: 0.5rem 0 0 0;
+      padding-left: 1.3rem;
+    }
+    .news-list li {
+      margin-bottom: 0.5rem;
+    }
+    .news-date {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-variant: small-caps;
+      letter-spacing: 0.5px;
+    }
+
+    /* Publications list */
+    ul.pub-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.4rem;
+    }
+    ul.pub-list > li {
+      margin-bottom: 1.1rem;
+      padding-left: 0.2rem;
+    }
+    ul.pub-list .venue {
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+    .new-tag {
+      display: inline-block;
+      color: var(--accent);
+      background: rgba(139, 58, 47, 0.08);
+      font-size: 0.72rem;
+      font-weight: bold;
+      letter-spacing: 0.7px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-right: 0.4rem;
+      vertical-align: 2px;
+    }
+
+    /* Talk list */
+    ul.talk-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul.talk-list > li {
+      margin-bottom: 0.9rem;
+    }
+    ul.talk-list .talk-meta {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    /* Teaching list */
+    .teaching-list {
+      padding-left: 1.3rem;
+    }
+    .teaching-list li {
+      margin-bottom: 0.5rem;
+    }
+    .teaching-list .instructor {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    /* Research description paragraphs */
+    .research p {
+      margin: 0.6rem 0 1rem 0;
+    }
+    .research b {
+      color: var(--text);
+    }
+
+    /* Spacer */
+    .spacer { height: 1rem; }
+
+    /* Footer */
+    footer {
+      margin-top: 3.5rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      img.portrait { height: 130px; }
+      h1 { font-size: 1.7rem; }
+      h2 { font-size: 1.2rem; }
+      nav.top-nav a { display: inline-block; margin: 0.2rem 0.4rem; font-size: 0.92rem; }
+      nav.top-nav .sep { display: none; }
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
 
+    <!-- Navigation -->
+    <nav class="top-nav">
+      <a href="#about">About</a><span class="sep">·</span>
+      <a href="#news">News</a><span class="sep">·</span>
+      <a href="#research">Research</a><span class="sep">·</span>
+      <a href="#publications">Publications</a><span class="sep">·</span>
+      <a href="#talks">Talks</a><span class="sep">·</span>
+      <a href="#teaching">Teaching</a>
+    </nav>
+
     <!-- Header -->
-    <div class="top-row">
+    <div class="top-row" id="about">
       <div>
         <h1>Chih-Fan (Rich) Pai</h1>
-        PhD Candidate<br />
-        Department of Electrical and Computer Engineering<br />
-        University of California San Diego
-        <p class="contact">
-          Email: cpai@ucsd.edu &nbsp;/&nbsp;
+        <div class="header-info">
+          PhD Candidate<br />
+          Department of Electrical and Computer Engineering<br />
+          University of California San Diego
+        </div>
+        <div class="contact">
+          <a href="mailto:cpai@ucsd.edu">cpai@ucsd.edu</a>
+          &nbsp;·&nbsp;
           <a href="data/CV_cpai.pdf">CV</a>
-        </p>
+          &nbsp;·&nbsp;
+          <a href="https://scholar.google.com/">Google Scholar</a>
+        </div>
       </div>
       <div>
         <img class="portrait" src="data/MyPic_2.jpg" alt="Portrait of Chih-Fan (Rich) Pai" />
       </div>
     </div>
 
-    <div class="spacer"></div>
-
     <!-- About -->
-    <table class="section-table">
-      <tr>
-        <td>
-          <h2>About</h2>
-          I am a PhD Candidate in Electrical and Computer Engineering (ECE) at the
-          <a href="https://ucsd.edu/">University of California San Diego</a> (UCSD), where I am advised by
-          Prof. <a href="https://zhengy09.github.io/">Yang Zheng</a>. I obtained my MS in Communication
-          Engineering from <a href="https://www.ntu.edu.tw/english/">National Taiwan University</a> (NTU), where I was
-          advised by Prof. See-May Phoong. I received my BS in ECE from
-          <a href="https://www.nycu.edu.tw/nycu/en/index">National Yang Ming Chiao Tung University</a>.
-        </td>
-      </tr>
-    </table>
+    <h2>About</h2>
+    <p>
+      I am a PhD Candidate in Electrical and Computer Engineering at the
+      <a href="https://ucsd.edu/">University of California San Diego</a>, advised by
+      Prof. <a href="https://zhengy09.github.io/">Yang Zheng</a>. I obtained my MS in Communication
+      Engineering from <a href="https://www.ntu.edu.tw/english/">National Taiwan University</a>, advised by Prof. See-May Phoong, and my BS in ECE from
+      <a href="https://www.nycu.edu.tw/nycu/en/index">National Yang Ming Chiao Tung University</a>.
+    </p>
+
+    <!-- News -->
+    <h2 id="news">News</h2>
+    <ul class="news-list">
+      <li>
+        <span class="news-date">May 2026</span> &mdash; New preprint on
+        <a href="https://arxiv.org/abs/XXXX.XXXXX">online nonstochastic prediction</a>
+        for marginally stable partially observed linear systems: we obtain polylogarithmic regret against the best stabilizing Luenberger predictor under adversarial noise.
+      </li>
+      <li>
+        <span class="news-date">Nov 2025</span> &mdash; Passed PhD qualifying exam.
+        <a href="data/qualifying_exam_talk.pdf">[talk slides]</a>
+      </li>
+    </ul>
 
     <!-- Research -->
-    <div class="spacer"></div>
-    <table class="section-table">
-      <tr>
-        <td>
-          <h2>Research</h2>
-          I am broadly interested in the theory of optimization and sequential decision-making under uncertainty,
-          with applications in stochastic, robust, and nonstochastic control. Some of my research directions include:
-          </p>
+    <h2 id="research">Research</h2>
+    <div class="research">
+      <p>
+        I am broadly interested in the theory of optimization and sequential decision-making under uncertainty,
+        with applications in stochastic, robust, and nonstochastic control. My current research has two main threads.
+      </p>
+      <p>
+        <b>Online prediction and control for dynamical systems.</b>
+        I study <i>adaptive online time-series prediction and nonstochastic control</i>
+        using tools from online convex optimization, developing algorithms with provable guarantees that
+        adapt across adversarial, nonstationary, and benign environments. I also design and analyze
+        <i>data-driven predictive control</i> algorithms for Koopman-linearizable nonlinear systems with
+        provable dynamic regret guarantees.
+      </p>
+      <p>
+        <b>Convex and nonconvex optimization in control.</b>
+        I study optimization landscapes of classical optimal and robust control problems from a
+        <i>policy optimization</i> perspective, including the linear–quadratic regulator (LQR) and
+        \( \mathcal{H}_\infty \) robust control. With collaborators, I have developed a unified
+        <i>Extended Convex Lifting</i> framework that reveals hidden convexity, bridging nonconvex
+        policy optimization and classical convex reformulations.
+      </p>
+      <p>
+        Previously, I worked on reward-free exploration in reinforcement learning &mdash; specifically
+        online active model estimation for Markov decision processes &mdash; and on signal processing
+        for communication systems during my MS.
+      </p>
+    </div>
 
-            <p>
-            <b>Online prediction and control for dynamical systems.</b>
-            I am investigating the problem of <i>adaptive and nonstationary online time-series prediction and non-stochastic control</i>
-            using tools from online convex optimization, developing algorithms 
-            that provably adapt across three layers: adversarial, nonstationary, and benign environments.
-            
-            I also design and analyze <i>data-driven predictive control</i> algorithms for Koopman-linearizable nonlinear systems 
-            with provable dynamic regret guarantees.
-             
-            </p>
-
-            <p>
-            <b>Convex and nonconvex optimization in control.</b>
-            I study optimization landscapes of classical optimal and robust control problems from a modern <i>policy optimization</i> perspective, including
-            linear–quadratic regulator (LQR) and \( \mathcal{H}_\infty \) robust control, etc.
-            We build a unified <i>Extended Convex Lifting</i> framework to reveal hidden convexity, 
-            which offers a bridge between nonconvex policy optimization and convex reformulations.
-            </p>
-
-          </p>
-
-          Previously, I worked on reward-free exploration in reinforcement learning, specifically the problem of online
-          active model estimation for Markov decision processes. I also worked on signal processing for communication
-          systems in my MS study.
-        </td>
-      </tr>
-    </table>
-
-    </p>
+    <!-- Experience -->
     <h2>Experience</h2>
     <p>
-    I was an Audio R&D Intern at <a href="https://www.qualcomm.com/">Qualcomm </a> during Summer 2025, 
-    working on active noise cancellation algorithms for earbuds.
-    I combined ideas from optimization, robust control, and signal processing to develop practical solutions.
+      I was an Audio R&amp;D Intern at <a href="https://www.qualcomm.com/">Qualcomm</a> in Summer 2025,
+      working on active noise cancellation algorithms for earbuds. I combined ideas from optimization,
+      robust control, and signal processing to develop practical solutions.
     </p>
 
-    <hr>
-
     <!-- Publications -->
-    <h2>Publications</h2>
-    <ul>
+    <h2 id="publications">Publications</h2>
+    <ul class="pub-list">
+      <li>
+        <span class="new-tag">NEW</span>
+        <a href="https://arxiv.org/abs/XXXX.XXXXX">Online Nonstochastic Prediction: Logarithmic Regret via Predictive Online Least Squares</a><br />
+        <b>Chih-Fan Pai</b> and Yang Zheng.<br />
+        <span class="venue">arXiv preprint, 2026</span>
+      </li>
       <li>
         <a href="https://arxiv.org/abs/2603.04843">Policy Optimization of Mixed \( \mathcal{H}_2 \)/\( \mathcal{H}_\infty \) Control: Benign Nonconvexity and Global Optimality</a><br />
         <b>Chih-Fan Pai</b>, Yuto Watanabe, Yujie Tang, and Yang Zheng.<br />
-        Provisionally acccept, to appear at <i>Automatica</i>
+        <span class="venue">Provisionally accepted, under review at <i>Automatica</i></span>
       </li>
       <li>
-      <a href="https://arxiv.org/abs/2603.07395">Online Tracking with Predictions for Nonlinear Systems with Koopman Linear Embedding</a><br />
+        <a href="https://arxiv.org/abs/2603.07395">Online Tracking with Predictions for Nonlinear Systems with Koopman Linear Embedding</a><br />
         <b>Chih-Fan Pai</b>, Xu Shang, Jiachen Qian, and Yang Zheng.<br />
-        <i>L4DC</i>, 2026
+        <span class="venue">L4DC, 2026</span>
       </li>
       <li>
         <a href="https://arxiv.org/abs/2406.04001">Benign Nonconvex Landscapes in Optimal and Robust Control, Part II: Extended Convex Lifting</a><br />
         Yang Zheng, <b>Chih-Fan Pai</b>, and Yujie Tang.<br />
-        <i>IEEE Transactions on Automatic Control</i>, 2026
+        <span class="venue">IEEE Transactions on Automatic Control, 2026</span>
       </li>
       <li>
         <a href="https://arxiv.org/abs/2312.15332">Benign Nonconvex Landscapes in Optimal and Robust Control, Part I: Global Optimality</a><br />
         Yang Zheng, <b>Chih-Fan Pai</b>, and Yujie Tang.<br />
-        <i>IEEE Transactions on Automatic Control</i>, 2026
+        <span class="venue">IEEE Transactions on Automatic Control, 2026</span>
       </li>
       <li>
         <a href="https://zhengy09.github.io/papers/ECL.pdf">Extended Convex Lifting for Policy Optimization of Optimal and Robust Control</a><br />
         Yang Zheng, <b>Chih-Fan Pai</b>, and Yujie Tang.<br />
-        <i>L4DC</i>, 2025
+        <span class="venue">L4DC, 2025</span>
       </li>
       <li>
         <a href="https://arxiv.org/pdf/2504.02201">Semidefinite Programming Duality in Infinite-Horizon Linear Quadratic Differential Games</a><br />
         Yuto Watanabe, <b>Chih-Fan Pai</b>, and Yang Zheng.<br />
-        <i>Conference on Decision and Control (CDC)</i>, 2025
+        <span class="venue">Conference on Decision and Control (CDC), 2025</span>
       </li>
     </ul>
 
     <!-- Talks -->
-    <h2>Talks</h2>
-    <ul>
+    <h2 id="talks">Talks</h2>
+    <ul class="talk-list">
       <li>
-        <a href="data/qualifying_exam_talk.pdf">
-          Decision-making in Uncertain Dynamic Environments: from Policy Optimization to Online Learning
-        </a><br />
-        My qualifying exam talk. Moving forward! Nov. 2025.
+        <a href="data/qualifying_exam_talk.pdf">Decision-making in Uncertain Dynamic Environments: from Policy Optimization to Online Learning</a><br />
+        <span class="talk-meta">PhD qualifying exam, Nov 2025</span>
       </li>
       <li>
-        <a href="https://drive.google.com/file/d/11NLnFY-VIBt7rFwxBibx6UKuYzpxZctA/view?usp=sharing">
-          Problem-dependent Dynamic Regret for Online Convex Optimization
-        </a><br />
-        Presented at <a href="https://sites.google.com/ucsd.edu/soc-lab/home/soc-reading-group?authuser=0">SOC reading group</a>, Oct. 2025.
+        <a href="https://drive.google.com/file/d/11NLnFY-VIBt7rFwxBibx6UKuYzpxZctA/view?usp=sharing">Problem-dependent Dynamic Regret for Online Convex Optimization</a><br />
+        <span class="talk-meta">
+          <a href="https://sites.google.com/ucsd.edu/soc-lab/home/soc-reading-group?authuser=0">SOC reading group</a>, Oct 2025
+        </span>
       </li>
       <li>
-        <a href="https://drive.google.com/file/d/10DLMYWpXJ6HIIU397YQ3Q2TUaMgwaz7r/view?usp=sharing">
-          Online Non-stochastic Control: a Regret-minimizing Approach
-        </a><br />
-        Invited presentation, <a href="https://github.com/yoavfreund/2025-online-learning">DSC291: Online Learning</a><br />
-        Host: <a href="https://cseweb.ucsd.edu/~yfreund/">Professor Yoav Freund</a>, March 2025.
+        <a href="https://drive.google.com/file/d/10DLMYWpXJ6HIIU397YQ3Q2TUaMgwaz7r/view?usp=sharing">Online Non-stochastic Control: a Regret-minimizing Approach</a><br />
+        <span class="talk-meta">
+          Invited presentation,
+          <a href="https://github.com/yoavfreund/2025-online-learning">DSC291: Online Learning</a>
+          (host: <a href="https://cseweb.ucsd.edu/~yfreund/">Prof. Yoav Freund</a>), March 2025
+        </span>
       </li>
       <li>
-        <a href="https://drive.google.com/file/d/1BIsgz7AXDcSxX1SMjOPpxLwnNqqQD74W/view?usp=drive_link">
-          Policy Optimization for Mixed \( \mathcal{H}_2 \)/\( \mathcal{H}_\infty \) Control: Benign Nonconvexity and Global Optimality
-        </a><br />
-        Presented at the
-        <a href="https://csc.usc.edu/socal/2024Fall/index.html">44th Southern California Control Workshop</a>,
-        University of Southern California, Nov. 1, 2024.
+        <a href="https://drive.google.com/file/d/1BIsgz7AXDcSxX1SMjOPpxLwnNqqQD74W/view?usp=drive_link">Policy Optimization for Mixed \( \mathcal{H}_2 \)/\( \mathcal{H}_\infty \) Control: Benign Nonconvexity and Global Optimality</a><br />
+        <span class="talk-meta">
+          <a href="https://csc.usc.edu/socal/2024Fall/index.html">44th Southern California Control Workshop</a>, USC, Nov 2024
+        </span>
       </li>
     </ul>
 
     <!-- Teaching -->
-    <h2>Teaching</h2>
-    TA for the following courses at UCSD:
-    <ul>
+    <h2 id="teaching">Teaching</h2>
+    <p>Teaching Assistant at UCSD:</p>
+    <ul class="teaching-list">
       <li>
-        ECE272A: Stochastic Processes and Dynamical Systems<br />
-        Instructor: Prof. <a href="https://poveda.ucsd.edu/home">Jorge I. Poveda</a>
+        ECE272A: Stochastic Processes and Dynamical Systems
+        <span class="instructor"> &mdash; Prof. <a href="https://poveda.ucsd.edu/home">Jorge I. Poveda</a></span>
       </li>
       <li>
-        ECE285: Agentic AI and LLMs for Smart Grids<br />
-        Instructor: Prof. <a href="https://yyshi.eng.ucsd.edu/">Yuanyuan Shi</a>
+        ECE285: Agentic AI and LLMs for Smart Grids
+        <span class="instructor"> &mdash; Prof. <a href="https://yyshi.eng.ucsd.edu/">Yuanyuan Shi</a></span>
       </li>
       <li>
-        ECE101: Linear Systems Fundamentals<br />
-        Instructor: Prof. <a href="https://cmrr-star.ucsd.edu/psiegel/">Paul Siegel</a> & Prof. <a href="https://zhengy09.github.io/">Yang Zheng</a><br />
-        Student evaluation: <a href="data/ECE101FA23.pdf">Fall 2023</a>, <a href="data/ECE101FA24.pdf">Fall 2024</a>, <a href="data/ECE101FA25.pdf">Fall 2025</a>
+        ECE101: Linear Systems Fundamentals
+        <span class="instructor"> &mdash; Prof. <a href="https://cmrr-star.ucsd.edu/psiegel/">Paul Siegel</a> &amp; Prof. <a href="https://zhengy09.github.io/">Yang Zheng</a></span><br />
+        <span class="instructor">Evaluations: <a href="data/ECE101FA23.pdf">Fall 2023</a>, <a href="data/ECE101FA24.pdf">Fall 2024</a>, <a href="data/ECE101FA25.pdf">Fall 2025</a></span>
       </li>
       <li>
-        ECE228: Machine Learning for Physical Applications<br />
-        Instructor: Prof. <a href="https://yyshi.eng.ucsd.edu/">Yuanyuan Shi</a><br />
-        Student evaluation: <a href="data/ECE228SP25.pdf">Spring 2025</a>
+        ECE228: Machine Learning for Physical Applications
+        <span class="instructor"> &mdash; Prof. <a href="https://yyshi.eng.ucsd.edu/">Yuanyuan Shi</a></span><br />
+        <span class="instructor">Evaluation: <a href="data/ECE228SP25.pdf">Spring 2025</a></span>
       </li>
       <li>
-        ECE171A: <a href="https://zhengy09.github.io/ECE171A/ece171a.html">Linear Control System Theory</a><br />
-        Instructor: Prof. <a href="https://zhengy09.github.io/">Yang Zheng</a><br />
-        Student evaluation: <a href="data/ECE171ASP24.pdf">Spring 2024</a>
+        ECE171A: <a href="https://zhengy09.github.io/ECE171A/ece171a.html">Linear Control System Theory</a>
+        <span class="instructor"> &mdash; Prof. <a href="https://zhengy09.github.io/">Yang Zheng</a></span><br />
+        <span class="instructor">Evaluation: <a href="data/ECE171ASP24.pdf">Spring 2024</a></span>
       </li>
       <li>
-        ECE285: <a href="https://zhengy09.github.io/ECE285/ece285.html">Semidefinite and Sum-of-squares Optimization</a><br />
-        Instructor: Prof. <a href="https://zhengy09.github.io/">Yang Zheng</a>
-      </li>
-    </ul>
-    TA for the following courses at NTU: 
-    <ul>
-      <li>
-        Calculus (NTU MATH), Linear Algebra (NTU EE)
-      </li>
-      <li>
-        Digital Signal Processing (NTU CommE), Multirate Signal Processing (NTU CommE)
+        ECE285: <a href="https://zhengy09.github.io/ECE285/ece285.html">Semidefinite and Sum-of-squares Optimization</a>
+        <span class="instructor"> &mdash; Prof. <a href="https://zhengy09.github.io/">Yang Zheng</a></span>
       </li>
     </ul>
-    <div class="spacer"></div>
+    <p>Teaching Assistant at NTU:</p>
+    <ul class="teaching-list">
+      <li>Calculus (Mathematics), Linear Algebra (EE)</li>
+      <li>Digital Signal Processing, Multirate Signal Processing (Communication Engineering)</li>
+    </ul>
+
+    <footer>
+      Last updated November 2025
+    </footer>
+
   </div>
 </body>
 </html>
