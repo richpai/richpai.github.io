@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Chih-Fan (Rich) Pai</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Chih-Fan (Rich) Pai is a PhD Candidate at UC San Diego working on online learning, nonstochastic control, and sequential decision-making." />
+  <meta name="description" content="Chih-Fan (Rich) Pai is a PhD Candidate at UC San Diego working on online learning, nonstochastic control, sampling-based model predictive control, and sequential decision-making under uncertainty." />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,9 +30,6 @@
   <!-- GoatCounter analytics -->
 <script data-goatcounter="https://rich.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-
-  <!-- MathJax for LaTeX -->
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
     :root {
@@ -214,6 +211,10 @@
       color: var(--text);
     }
 
+    /* Inline math set in plain HTML so it inherits colour and font */
+    .m { font-style: italic; }
+    .m sub { font-style: normal; font-size: 0.75em; }
+
     /* Spacer */
     .spacer { height: 1rem; }
 
@@ -263,7 +264,9 @@
         <div class="contact">
           <a href="mailto:cpai@ucsd.edu">cpai@ucsd.edu</a>
           &nbsp;·&nbsp;
-          <a href="data/CV_cpai_v2.pdf">CV</a>
+          <a href="mailto:cfrpai@gmail.com">cfrpai@gmail.com</a>
+          &nbsp;·&nbsp;
+          <a href="data/CV_cpai_v3.pdf">CV</a>
           &nbsp;·&nbsp;
           <a href="https://scholar.google.com.tw/citations?user=D-k75Q0AAAAJ&hl=en&authuser=1">Google Scholar</a>
         </div>
@@ -279,7 +282,8 @@
       I am a PhD Candidate in Electrical and Computer Engineering at the
       <a href="https://ucsd.edu/">University of California San Diego</a>, advised by
       Prof. <a href="https://zhengy09.github.io/">Yang Zheng</a>.
-      I expect to graduate in Fall 2026 and am exploring opportunities.
+      I expect to graduate in December 2026 and am on the job market for research positions
+      in both academia and industry.
       I obtained my MS in Communication Engineering from <a href="https://www.ntu.edu.tw/english/">National Taiwan University</a>, advised by Prof. See-May Phoong, and my BS in ECE from
       <a href="https://www.nycu.edu.tw/nycu/en/index">National Yang Ming Chiao Tung University</a>.
     </p>
@@ -287,6 +291,22 @@
     <!-- News -->
     <h2 id="news">News</h2>
     <ul class="news-list">
+      <li>
+        <span class="news-date">Oct 2026</span> &mdash; Received the UC San Diego
+        Graduate Scholarly Impact Award.
+      </li>
+      <li>
+        <span class="news-date">Aug 2026</span> &mdash; Parts
+        <a href="https://arxiv.org/abs/2312.15332">I</a> and
+        <a href="https://arxiv.org/abs/2406.04001">II</a> of
+        <i>Benign Nonconvex Landscapes in Optimal and Robust Control</i>
+        appeared in <i>IEEE Transactions on Automatic Control</i> (vol. 71, no. 8).
+      </li>
+      <li>
+        <span class="news-date">Jun 2026</span> &mdash; Presented
+        <i><a href="https://arxiv.org/abs/2603.07395">Online Tracking with Predictions for
+        Nonlinear Systems with Koopman Linear Embedding</a></i> at L4DC 2026.
+      </li>
       <li>
         <span class="news-date">May 2026</span> &mdash; Check out our new preprint on
         <i><a href="https://arxiv.org/abs/2605.04364">Online Nonstochastic Prediction</a></i>!
@@ -304,30 +324,32 @@
     <h2 id="research">Research</h2>
     <div class="research">
       <p>
-        I am broadly interested in the theory of optimization, online learning, and sequential decision-making, 
-        with a focus on control, prediction, and reinforcement learning for dynamical systems.
-        My current research has two main threads.
+        I work on prediction, planning, and control for dynamical systems under uncertainty.
+        The question running through my research is how closed-loop decision making stays
+        reliable when dynamics are learned or partially observed, predictions are imperfect,
+        and disturbances need not follow a stochastic model.
       </p>
       <p>
-        <b>Online prediction and control for dynamical systems.</b>
-        I study <i>sequential prediction and online nonstochastic control</i>
-        using tools from online learning/optimization, developing algorithms with provable guarantees that
-        adapt across adversarial, nonstationary, and benign environments. I also design and analyze
-        <i>data-driven predictive control</i> algorithms for Koopman-linearizable nonlinear systems with
-        provable dynamic regret guarantees.
+        <b>Online prediction and nonstochastic control.</b>
+        Sequential prediction and control for partially observed systems under adversarial
+        disturbances, with finite-time regret guarantees in place of asymptotic ones.
       </p>
       <p>
-        <b>Convex and nonconvex optimization in control.</b>
-        I study optimization landscapes of classical optimal and robust control from the
-        <i>policy optimization</i> perspective, including the Linear Quadratic Regulator (LQR) and
-        \( \mathcal{H}_\infty \) robust control. With collaborators, I have developed a unified
-        <i>Extended Convex Lifting</i> framework that reveals hidden convexity, bridging nonconvex
-        policy optimization and classical Riccati theory and convex reformulations.
+        <b>Sampling-based and data-driven MPC.</b>
+        Closed-loop performance of planners that replan from finite samples and imperfect
+        models &mdash; CEM, MPPI, and Koopman-based data-driven MPC &mdash; and when sharper
+        prediction or optimization actually buys better long-horizon control.
       </p>
       <p>
-        Previously, I worked on reward-free exploration in reinforcement learning, specifically
-        online active model estimation for Markov decision processes, and on signal processing
-        for communication systems during my MS.
+        <b>Policy optimization for optimal and robust control.</b>
+        Nonconvex landscapes of LQR, <span class="m">H<sub>&infin;</sub></span>, and mixed
+        <span class="m">H<sub>2</sub></span>/<span class="m">H<sub>&infin;</sub></span>
+        control, and the hidden convex structure behind them &mdash; including
+        <i>Extended Convex Lifting</i>, developed with collaborators.
+      </p>
+      <p>
+        Earlier: reward-free exploration in reinforcement learning, and signal processing for
+        communication systems during my MS.
       </p>
     </div>
 
@@ -349,40 +371,57 @@
         <span class="venue">arXiv preprint, 2026</span>
       </li>
       <li>
-        <a href="https://arxiv.org/abs/2603.04843">Policy Optimization of Mixed \( \mathcal{H}_2 \)/\( \mathcal{H}_\infty \) Control: Benign Nonconvexity and Global Optimality</a><br />
+        <a href="https://arxiv.org/abs/2603.04843">Policy Optimization of Mixed <span class="m">H<sub>2</sub></span>/<span class="m">H<sub>&infin;</sub></span> Control: Benign Nonconvexity and Global Optimality</a><br />
         <b>Chih-Fan Pai</b>, Yuto Watanabe, Yujie Tang, and Yang Zheng.<br />
-        <span class="venue">Under review at <i>Automatica</i> (Accept provisionally)</span>
+        <span class="venue">Provisionally accepted, <i>Automatica</i>, 2026</span>
       </li>
       <li>
         <a href="https://arxiv.org/abs/2603.07395">Online Tracking with Predictions for Nonlinear Systems with Koopman Linear Embedding</a><br />
         <b>Chih-Fan Pai</b>, Xu Shang, Jiachen Qian, and Yang Zheng.<br />
-        <span class="venue">L4DC, 2026</span>
+        <span class="venue">Learning for Dynamics and Control (L4DC), PMLR 331:1575&ndash;1600, 2026</span>
       </li>
       <li>
         <a href="https://arxiv.org/abs/2406.04001">Benign Nonconvex Landscapes in Optimal and Robust Control, Part II: Extended Convex Lifting</a><br />
         Yang Zheng, <b>Chih-Fan Pai</b>, and Yujie Tang.<br />
-        <span class="venue">IEEE Transactions on Automatic Control, 2026</span>
+        <span class="venue">IEEE Transactions on Automatic Control, 71(8):5350&ndash;5365, 2026</span>
       </li>
       <li>
         <a href="https://arxiv.org/abs/2312.15332">Benign Nonconvex Landscapes in Optimal and Robust Control, Part I: Global Optimality</a><br />
         Yang Zheng, <b>Chih-Fan Pai</b>, and Yujie Tang.<br />
-        <span class="venue">IEEE Transactions on Automatic Control, 2026</span>
+        <span class="venue">IEEE Transactions on Automatic Control, 71(8):5334&ndash;5349, 2026</span>
       </li>
       <li>
         <a href="https://zhengy09.github.io/papers/ECL.pdf">Extended Convex Lifting for Policy Optimization of Optimal and Robust Control</a><br />
         Yang Zheng, <b>Chih-Fan Pai</b>, and Yujie Tang.<br />
-        <span class="venue">L4DC, 2025</span>
+        <span class="venue">Learning for Dynamics and Control (L4DC), PMLR 283:392&ndash;404, 2025</span>
       </li>
       <li>
         <a href="https://arxiv.org/pdf/2504.02201">Semidefinite Programming Duality in Infinite-Horizon Linear Quadratic Differential Games</a><br />
         Yuto Watanabe, <b>Chih-Fan Pai</b>, and Yang Zheng.<br />
-        <span class="venue">Conference on Decision and Control (CDC), 2025</span>
+        <span class="venue">IEEE Conference on Decision and Control (CDC), pp. 3964&ndash;3970, 2025</span>
+      </li>
+      <li>
+        <a href="https://ieeexplore.ieee.org/document/10715224">Low Complexity Estimation of LTV Channels for OFDM Systems with Uniformly Spaced Pilots</a><br />
+        <b>Chih-Fan Pai</b> and See-May Phoong.<br />
+        <span class="venue">European Signal Processing Conference (EUSIPCO), 2024</span>
+      </li>
+      <li>
+        <a href="https://ieeexplore.ieee.org/document/9066944">Depth-L Nyquist(M) Filters and Biorthogonal Partners</a><br />
+        <b>Chih-Fan Pai</b>, Tien-Chiu Hung, and See-May Phoong.<br />
+        <span class="venue">IEEE Access, 2020</span>
       </li>
     </ul>
 
     <!-- Talks -->
     <h2 id="talks">Talks</h2>
     <ul class="talk-list">
+      <li>
+        Decision-making in Uncertain Dynamic Environments<br />
+        <span class="talk-meta">
+          Invited seminar, Department of Computer Science,
+          <a href="https://www.nycu.edu.tw/nycu/en/index">National Yang Ming Chiao Tung University</a>, Dec 2025
+        </span>
+      </li>
       <li>
         <a href="data/qualifying_exam_talk.pdf">Decision-making in Uncertain Dynamic Environments: from Policy Optimization to Online Learning</a><br />
         <span class="talk-meta">PhD qualifying exam, Nov 2025</span>
@@ -402,7 +441,7 @@
         </span>
       </li>
       <li>
-        <a href="https://drive.google.com/file/d/1BIsgz7AXDcSxX1SMjOPpxLwnNqqQD74W/view?usp=drive_link">Policy Optimization for Mixed \( \mathcal{H}_2 \)/\( \mathcal{H}_\infty \) Control: Benign Nonconvexity and Global Optimality</a><br />
+        <a href="https://drive.google.com/file/d/1BIsgz7AXDcSxX1SMjOPpxLwnNqqQD74W/view?usp=drive_link">Policy Optimization for Mixed <span class="m">H<sub>2</sub></span>/<span class="m">H<sub>&infin;</sub></span> Control: Benign Nonconvexity and Global Optimality</a><br />
         <span class="talk-meta">
           <a href="https://csc.usc.edu/socal/2024Fall/index.html">44th Southern California Control Workshop</a>, USC, Nov 2024
         </span>
@@ -448,7 +487,7 @@
     </ul>
 
     <footer>
-      Last updated May 2026
+      Last updated October 2026
     </footer>
 
   </div>
