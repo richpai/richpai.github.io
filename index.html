@@ -27,6 +27,9 @@
 }
 </script>
 
+  <!-- MathJax for LaTeX -->
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
   <!-- GoatCounter analytics -->
 <script data-goatcounter="https://rich.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -211,9 +214,10 @@
       color: var(--text);
     }
 
-    /* Inline math set in plain HTML so it inherits colour and font */
-    .m { font-style: italic; }
-    .m sub { font-style: normal; font-size: 0.75em; }
+    /* MathJax renders in its own container; make it take the surrounding colour
+       so inline math inside links is not left black */
+    mjx-container, mjx-container * { color: inherit !important; }
+    a mjx-container { text-decoration: inherit; }
 
     /* Spacer */
     .spacer { height: 1rem; }
@@ -310,9 +314,9 @@
       <li>
         <span class="news-date">May 2026</span> &mdash; Check out our new preprint on
         <i><a href="https://arxiv.org/abs/2605.04364">Online Nonstochastic Prediction</a></i>!
-        <br />
-        We establish the first polylogarithmic regret guarantee for online prediction in marginally stable, partially observed linear dynamical systems under nonstochastic disturbances, against the best-in-hindsight stabilizing Luenberger predictor.
-        This (partially) closes a gap left open by prior work and extends the logarithmic-regret regime from the stochastic to the adversarial setting.
+        We show that polylogarithmic regret is achievable for marginally stable, partially
+        observed systems under adversarial disturbances, where earlier logarithmic-regret
+        results all needed stochastic noise.
       </li>
       <li>
         <span class="news-date">Nov 2025</span> &mdash; Passed PhD qualifying exam.
@@ -331,21 +335,23 @@
       </p>
       <p>
         <b>Online prediction and nonstochastic control.</b>
-        Sequential prediction and control for partially observed systems under adversarial
-        disturbances, with finite-time regret guarantees in place of asymptotic ones.
+        I design sequential prediction and control algorithms for partially observed systems
+        under adversarial disturbances, and prove finite-time regret guarantees for them
+        rather than asymptotic ones.
       </p>
       <p>
-        <b>Sampling-based and data-driven MPC.</b>
-        Closed-loop performance of planners that replan from finite samples and imperfect
-        models &mdash; CEM, MPPI, and Koopman-based data-driven MPC &mdash; and when sharper
-        prediction or optimization actually buys better long-horizon control.
+        <b>Model predictive control and model-based RL.</b>
+        I study how planners behave in closed loop when they replan from finite samples and
+        imperfect models &mdash; sampling-based methods such as CEM and MPPI, and data-driven
+        MPC for Koopman-linearizable systems. I want to know when sharper prediction or better
+        optimization actually buys better long-horizon control.
       </p>
       <p>
         <b>Policy optimization for optimal and robust control.</b>
-        Nonconvex landscapes of LQR, <span class="m">H<sub>&infin;</sub></span>, and mixed
-        <span class="m">H<sub>2</sub></span>/<span class="m">H<sub>&infin;</sub></span>
-        control, and the hidden convex structure behind them &mdash; including
-        <i>Extended Convex Lifting</i>, developed with collaborators.
+        I study the nonconvex landscapes of LQR, \( \mathcal{H}_\infty \), and mixed
+        \( \mathcal{H}_2/\mathcal{H}_\infty \) control, and the hidden convex structure
+        behind them &mdash; including <i>Extended Convex Lifting</i>, which I developed with
+        collaborators.
       </p>
       <p>
         Earlier: reward-free exploration in reinforcement learning, and signal processing for
@@ -365,13 +371,12 @@
     <h2 id="publications">Publications</h2>
     <ul class="pub-list">
       <li>
-        <span class="new-tag">NEW</span>
         <a href="https://arxiv.org/abs/2605.04364">Online Nonstochastic Prediction: Logarithmic Regret via Predictive Online Least Squares</a><br />
         <b>Chih-Fan Pai</b> and Yang Zheng.<br />
         <span class="venue">arXiv preprint, 2026</span>
       </li>
       <li>
-        <a href="https://arxiv.org/abs/2603.04843">Policy Optimization of Mixed <span class="m">H<sub>2</sub></span>/<span class="m">H<sub>&infin;</sub></span> Control: Benign Nonconvexity and Global Optimality</a><br />
+        <a href="https://arxiv.org/abs/2603.04843">Policy Optimization of Mixed \( \mathcal{H}_2/\mathcal{H}_\infty \) Control: Benign Nonconvexity and Global Optimality</a><br />
         <b>Chih-Fan Pai</b>, Yuto Watanabe, Yujie Tang, and Yang Zheng.<br />
         <span class="venue">Provisionally accepted, <i>Automatica</i>, 2026</span>
       </li>
@@ -441,7 +446,7 @@
         </span>
       </li>
       <li>
-        <a href="https://drive.google.com/file/d/1BIsgz7AXDcSxX1SMjOPpxLwnNqqQD74W/view?usp=drive_link">Policy Optimization for Mixed <span class="m">H<sub>2</sub></span>/<span class="m">H<sub>&infin;</sub></span> Control: Benign Nonconvexity and Global Optimality</a><br />
+        <a href="https://drive.google.com/file/d/1BIsgz7AXDcSxX1SMjOPpxLwnNqqQD74W/view?usp=drive_link">Policy Optimization for Mixed \( \mathcal{H}_2/\mathcal{H}_\infty \) Control: Benign Nonconvexity and Global Optimality</a><br />
         <span class="talk-meta">
           <a href="https://csc.usc.edu/socal/2024Fall/index.html">44th Southern California Control Workshop</a>, USC, Nov 2024
         </span>
