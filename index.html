@@ -121,11 +121,12 @@
       height: 180px;
       float: right;
       border-radius: 3px;
+      border: 1px solid var(--rule);
     }
 
     /* Section headings */
     h2 {
-      margin: 2.2rem 0 0.8rem 0;
+      margin: 2.6rem 0 1rem 0;
       font-size: 1.4rem;
       font-weight: 600;
       color: var(--heading);
@@ -144,13 +145,14 @@
       padding-left: 1.3rem;
     }
     .news-list li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
     .news-date {
       color: var(--muted);
       font-size: 0.92rem;
       font-variant: small-caps;
       letter-spacing: 0.5px;
+      white-space: nowrap;
     }
 
     /* Publications list */
@@ -210,14 +212,25 @@
     .research p {
       margin: 0.6rem 0 1rem 0;
     }
-    .research b {
-      color: var(--text);
+    .research p.thread {
+      margin: 0 0 1.25rem 0;
+    }
+    .research p.thread b {
+      display: block;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      margin-bottom: 0.1rem;
     }
 
     /* MathJax renders in its own container; make it take the surrounding colour
        so inline math inside links is not left black */
     mjx-container, mjx-container * { color: inherit !important; }
     a mjx-container { text-decoration: inherit; }
+
+    /* Status line at the top of About */
+    .status { margin: 0.5rem 0 1.1rem 0; }
+    .status-mark { color: var(--accent); margin-right: 0.4rem; }
 
     /* Spacer */
     .spacer { height: 1rem; }
@@ -282,12 +295,14 @@
 
     <!-- About -->
     <h2>About</h2>
+    <p class="status">
+      <span class="status-mark">&#10022;</span>
+      I am graduating in December 2026 and looking for research positions in both academia and industry.
+    </p>
     <p>
       I am a PhD Candidate in Electrical and Computer Engineering at the
       <a href="https://ucsd.edu/">University of California San Diego</a>, advised by
       Prof. <a href="https://zhengy09.github.io/">Yang Zheng</a>.
-      I expect to graduate in December 2026 and am on the job market for research positions
-      in both academia and industry.
       I obtained my MS in Communication Engineering from <a href="https://www.ntu.edu.tw/english/">National Taiwan University</a>, advised by Prof. See-May Phoong, and my BS in ECE from
       <a href="https://www.nycu.edu.tw/nycu/en/index">National Yang Ming Chiao Tung University</a>.
     </p>
@@ -296,30 +311,32 @@
     <h2 id="news">News</h2>
     <ul class="news-list">
       <li>
-        <span class="news-date">Oct 2026</span> &mdash; Received the UC San Diego
+        <span class="news-date">[Oct 2026]</span> Received the UC San Diego
         Graduate Scholarly Impact Award.
       </li>
       <li>
-        <span class="news-date">Aug 2026</span> &mdash; Parts
+        <span class="news-date">[Aug 2026]</span> Parts
         <a href="https://arxiv.org/abs/2312.15332">I</a> and
         <a href="https://arxiv.org/abs/2406.04001">II</a> of
         <i>Benign Nonconvex Landscapes in Optimal and Robust Control</i>
         appeared in <i>IEEE Transactions on Automatic Control</i> (vol. 71, no. 8).
       </li>
       <li>
-        <span class="news-date">Jun 2026</span> &mdash; Presented
-        <i><a href="https://arxiv.org/abs/2603.07395">Online Tracking with Predictions for
-        Nonlinear Systems with Koopman Linear Embedding</a></i> at L4DC 2026.
+        <span class="news-date">[Jun 2026]</span> Presented
+        <i><a href="https://proceedings.mlr.press/v331/pai26a.html">Online Tracking with
+        Predictions for Nonlinear Systems with Koopman Linear Embedding</a></i> at L4DC 2026.
       </li>
       <li>
-        <span class="news-date">May 2026</span> &mdash; Check out our new preprint on
+        <span class="news-date">[May 2026]</span> Check out our new preprint on
         <i><a href="https://arxiv.org/abs/2605.04364">Online Nonstochastic Prediction</a></i>!
-        We show that polylogarithmic regret is achievable for marginally stable, partially
-        observed systems under adversarial disturbances, where earlier logarithmic-regret
-        results all needed stochastic noise.
+        <br />
+        We show that polylogarithmic regret is achievable for output prediction in marginally
+        stable, partially observed systems under adversarial disturbances, via optimistic
+        online learning with predictive hints. Earlier logarithmic-regret results either
+        address fully observed state prediction or assume a stochastic noise model.
       </li>
       <li>
-        <span class="news-date">Nov 2025</span> &mdash; Passed PhD qualifying exam.
+        <span class="news-date">[Nov 2025]</span> Passed PhD qualifying exam.
         <a href="data/qualifying_exam_talk.pdf">[talk slides]</a>
       </li>
     </ul>
@@ -333,20 +350,20 @@
         reliable when dynamics are learned or partially observed, predictions are imperfect,
         and disturbances need not follow a stochastic model.
       </p>
-      <p>
-        <b>Online prediction and nonstochastic control.</b>
+      <p class="thread">
+        <b>Online prediction and nonstochastic control</b>
         I design sequential prediction and control algorithms for partially observed systems
         under adversarial disturbances via regret-minimizing approaches.
       </p>
-      <p>
-        <b>Model predictive control and model-based RL.</b>
-        I study how planners behave in closed loop when they replan from finite samples and
-        imperfect models &mdash; sampling-based methods such as CEM and MPPI, and data-driven
-        MPC for Koopman-linearizable systems. I want to know when sharper prediction or better
-        optimization actually yields better long-horizon control.
+      <p class="thread">
+        <b>Model predictive control and model-based RL</b>
+        I study how receding-horizon planners behave in closed loop under finite samples,
+        imperfect models, and incomplete information: sampling-based methods such as CEM and
+        MPPI, and data-driven MPC for Koopman-linearizable systems. I want to know when
+        sharper prediction or better optimization actually yields better long-horizon control.
       </p>
-      <p>
-        <b>Policy optimization for optimal and robust control.</b>
+      <p class="thread">
+        <b>Policy optimization for optimal and robust control</b>
         I study the nonconvex landscapes of LQR, \( \mathcal{H}_\infty \), and mixed
         \( \mathcal{H}_2/\mathcal{H}_\infty \) control, and the hidden convex structure
         behind them. With collaborators, I developed <i>Extended Convex Lifting</i>, a unified
